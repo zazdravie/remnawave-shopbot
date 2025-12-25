@@ -218,7 +218,8 @@ EOF
     log_success "✔ Конфигурация Nginx обновлена."
 }
 
-REPO_URL="https://github.com/tweopi/remnawave-shopbot.git"
+# --- ИЗМЕНЕНО: Репозиторий перенаправлен на zazdravie ---
+REPO_URL="https://github.com/zazdravie/remnawave-shopbot.git"
 PROJECT_DIR="remnawave-shopbot"
 NGINX_CONF="/etc/nginx/sites-available/${PROJECT_DIR}.conf"
 NGINX_LINK="/etc/nginx/sites-enabled/${PROJECT_DIR}.conf"
@@ -250,6 +251,7 @@ ensure_certbot_nginx
 
 log_info "\nШаг 2: клонирование репозитория"
 if [[ ! -d "$PROJECT_DIR/.git" ]]; then
+    # Здесь скрипт запросит Username (zazdravie) и Password (ваш TOKEN)
     git clone "$REPO_URL" "$PROJECT_DIR"
 else
     log_warn "Каталог $PROJECT_DIR уже существует. Будет использована текущая версия."
